@@ -1,6 +1,6 @@
 # SlavePiController
 ## Dependencies  
-python
+python  
 Flask
 
 to install flask "pip install -U Flask"
