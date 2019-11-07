@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
@@ -6,8 +7,13 @@ app = Flask(__name__)
 @app.route("/translate",methods=['POST'])
 def translate():
 	try:
+		data=request.get_json()
+		if('text' not in data):
+			return buildResponse(400,"invalid request missing text field")
+		text=data['text']
+
 		#put your translate service here
-		return buildResponse(200,"sucess")
+		return buildResponse(200,"sucess translating text: "+text)
 	except Exception as e:
 		return buildResponse(500,str(e))
 
